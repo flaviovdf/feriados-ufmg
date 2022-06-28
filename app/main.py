@@ -14,7 +14,7 @@ import pandas as pd
 import requests
 
 
-APP = Flask(__name__)
+app = Flask(__name__)
 BASE_URL = 'ufmg.br/a-universidade/calendario-academico'
 DAYS = {
     0: 'Segunda',
@@ -63,7 +63,7 @@ def find_feriados(year: int, loc: str) -> Tuple[int, list]:
     return (200, feriados)
 
 
-@APP.route("/")
+@app.route("/")
 def inicio(cola_html_body: bool = True) -> str:
     page = '''
     <!DOCTYPE html>
@@ -118,7 +118,7 @@ def inicio(cola_html_body: bool = True) -> str:
     return page
 
 
-@APP.route("/pegacalendario")
+@app.route("/pegacalendario")
 def pegacalendario():
     page = inicio(False)
 
