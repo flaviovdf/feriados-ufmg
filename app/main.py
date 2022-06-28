@@ -159,18 +159,23 @@ def pegacalendario():
             weekday = dt.weekday()
             if weekday in dias_interesse:
                 is_feriado = day in feriados
-                dia_semana_col.append(DAYS[weekday])
-                data_col.append(day)
+                dia_semana_col.append(DAYS[weekday][:3])
+                data_col.append(str(day.day) +
+                                '/' +
+                                str(day.month) +
+                                '/' +
+                                str(day.year))
                 if is_feriado:
                     aula_col.append('FERIADO!!!')
                 else:
-                    aula_col.append('Dia de Aula')
+                    aula_col.append(' ')
         html_table = pd.DataFrame(
-            {'Dia Semana': dia_semana_col,
+            {'Dia': dia_semana_col,
              'Data': data_col,
              'Aula': aula_col}
-        ).to_html()
-        page += html_table
+        )
+        html_table.index += 1
+        page += html_table.to_html()
 
     page += '''
     </body>
