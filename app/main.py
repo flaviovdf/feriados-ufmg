@@ -66,7 +66,15 @@ def find_feriados(year: int, loc: str) -> Tuple[int, list]:
 @APP.route("/")
 def inicio(cola_html_body: bool = True) -> str:
     page = '''
-    <html>
+    <!DOCTYPE html>
+    <html lang="pt-BR">
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.css">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Aulas UFMG</title>
+    </head>
+
     <body>
 
     <h1>Monte Suas Aulas da UFMG!</h1>
